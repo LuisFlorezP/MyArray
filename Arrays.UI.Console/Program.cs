@@ -35,6 +35,8 @@ try
             case 6:
                 Console.WriteLine(myArray.GetMostRepeated());
                 break;
+            case 0:
+                break;
             default:
                 Console.WriteLine("Fuck you. Opción no existe!!!!");
                 break;
