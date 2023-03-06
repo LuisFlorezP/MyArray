@@ -45,7 +45,11 @@ try
                 Console.WriteLine("\nAverage of the array: " + myArray.Average());
                 break;
             case 10:
-                
+                Console.Write("Ingrese el límite de la sucesion fibonacci: ");
+                var limit = Console.ReadLine();
+                int l;
+                int.TryParse(limit, out l);
+                Console.WriteLine(myArray.Fibonacci(l));
                 break;
             case 11:
                 

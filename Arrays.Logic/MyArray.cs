@@ -380,6 +380,43 @@ namespace Arrays.Logic
         }
         #endregion
 
+        #region Methods for Fibonacci
+        public MyArray Fibonacci(int l)
+        {
+            int n = 2, a = 0, b = 1;
+            
+            for (int i = 0; true; i++)
+            {
+                int c = a + b;
+                a = b;
+                b = c;
+                if (c <= l)
+                {
+                    n++;
+                } else
+                {
+                    break;
+                }
+            }
+
+            var array = new MyArray(n);
+            array.Add(0);
+            array.Add(1);
+
+            a = 0; 
+            b = 1;
+            for (int i = 2; i < n; i++)
+            {
+                int c = a + b;
+                a = b;
+                b = c;
+                array.Add(c);
+            }
+
+            return array;
+        }
+        #endregion
+
         #region ToString
         public override string ToString()
         {
