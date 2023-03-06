@@ -42,7 +42,7 @@ try
                 Console.WriteLine("\nTotal amount of the array: " + myArray.TotalAmount());
                 break;
             case 9:
-                
+                Console.WriteLine("\nAverage of the array: " + myArray.Average());
                 break;
             case 10:
                 
@@ -51,7 +51,7 @@ try
                 
                 break;
             case 0:
-                Console.WriteLine("\nSaliendo...");
+                Console.WriteLine("\nComing out...");
                 break;
             default:
                 Console.WriteLine("\nFuck you. Opción no existe!!!!");
@@ -67,19 +67,19 @@ catch (Exception ex)
 int Menu()
 {
     Console.WriteLine(
-        "\nOPCIONES:\n" +
-            "   - Opción 1. Definir tamaño de arreglo.\n" +
-                "   - Opción 2. Mostrar arreglo.\n" +
-                    "   - Opción 3. Mostrar múmeros pares.\n" +
-                        "   - Opción 4. Mostrar múmeros primos.\n" +
-                            "   - Opción 5. Mostrar múmeros que no se repiten.\n" +
-                                "   - Opción 6. Mostrar múmeros que más se repiten.\n" +
-                                    "   - Opción 7. Invertir arreglo.\n" +
-                                        "   - Opción 8. Sumar arreglo.\n" +
-                                            "   - Opción 9. Promedio arreglo.\n" +
-                                                "   - Opción 10. Arreglo fibonnaci.\n" +
-                                                    "   - Opción 11. Ordenar arreglo.\n" +
-                                                        "   - Opción 0. Salir.");
+        "\nOPTIONS:\n" +
+            "   - Option 1. Definir tamaño de arreglo.\n" +
+                "   - Option 2. Mostrar arreglo.\n" +
+                    "   - Option 3. Mostrar múmeros pares.\n" +
+                        "   - Option 4. Mostrar múmeros primos.\n" +
+                            "   - Option 5. Mostrar múmeros que no se repiten.\n" +
+                                "   - Option 6. Mostrar múmeros que más se repiten.\n" +
+                                    "   - Option 7. Invertir arreglo.\n" +
+                                        "   - Option 8. Sumar arreglo.\n" +
+                                            "   - Option 9. Promedio arreglo.\n" +
+                                                "   - Option 10. Arreglo fibonnaci.\n" +
+                                                    "   - Option 11. Ordenar arreglo.\n" +
+                                                        "   - Option 0. Salir.");
     bool isValid = false;
     int option = 0;
     do

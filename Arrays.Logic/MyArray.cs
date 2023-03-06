@@ -366,6 +366,20 @@ namespace Arrays.Logic
         }
         #endregion
 
+        #region Methods fot Average
+        public float Average()
+        {
+            int totalAmount = 0;
+
+            for (int i = 0; i < _top; i++)
+            {
+                totalAmount += _array[i];
+            }
+
+            return totalAmount / _top;
+        }
+        #endregion
+
         #region ToString
         public override string ToString()
         {
