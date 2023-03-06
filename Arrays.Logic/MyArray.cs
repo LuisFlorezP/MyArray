@@ -129,6 +129,20 @@ namespace Arrays.Logic
 
         }
 
+        private bool IsPrime(int n)
+        {
+            if (n == 1) return false;
+
+            for (int i = 2; i <= Math.Sqrt(n); i++)
+            {
+                if (n % i == 0)
+                {
+                    return false;
+                }
+            }
+            return true;
+        }
+
         public MyArray GetOdds()
         {
             int oddsCount = 0;
@@ -150,6 +164,11 @@ namespace Arrays.Logic
             }
 
             return oddsArray;
+        }
+
+        private bool IsOdd(int n)
+        {
+            return n % 2 == 0;
         }
 
         public MyArray GetNonRepeated()
@@ -194,49 +213,11 @@ namespace Arrays.Logic
 
         public MyArray GetMostRepeated()
         {
-            int[,] matrixCount = new int[_top,2];
+            int[,] matrixCount = new int[_top, 2];
             int topMatrix = FillMatrixCount(matrixCount);
             OrderMatrixCount(matrixCount, topMatrix);
             int repeatedCounter = GetRepeatedCounter(matrixCount, topMatrix);
             return FillMostRepeated(repeatedCounter, matrixCount);
-        }
-
-        private MyArray FillMostRepeated(int repeatedCounter, int[,] matrixCount)
-        {
-            var mostRepeated = new MyArray(repeatedCounter);
-            for (int i = 0; i < repeatedCounter; i++)
-            {
-                mostRepeated.Add(matrixCount[i, 0]);
-            }
-            return mostRepeated;
-        }
-
-        private int GetRepeatedCounter(int[,] matrixCount, int topMatrix)
-        {
-            int repeatedCounter = 1;
-            for (; repeatedCounter < topMatrix; repeatedCounter++)
-            {
-                if (matrixCount[0, 1] != matrixCount[repeatedCounter, 1])
-                {
-                    break;
-                }
-            }
-            return repeatedCounter;
-        }
-
-        private void OrderMatrixCount(int[,] matrixCount, int topMatrix)
-        {
-            for (int i = 0; i < topMatrix - 1; i++)
-            {
-                for (int j = i + 1; j < topMatrix; j++)
-                {
-                    if (matrixCount[i, 1] < matrixCount[j, 1])
-                    {
-                        Change(ref matrixCount[i, 0], ref matrixCount[j, 0]);
-                        Change(ref matrixCount[i, 1], ref matrixCount[j, 1]);
-                    }
-                }
-            }
         }
 
         private int FillMatrixCount(int[,] matrixCount)
@@ -264,9 +245,42 @@ namespace Arrays.Logic
             return topMatrix;
         }
 
-        private bool IsOdd(int n)
+        private void OrderMatrixCount(int[,] matrixCount, int topMatrix)
         {
-            return n % 2 == 0;
+            for (int i = 0; i < topMatrix - 1; i++)
+            {
+                for (int j = i + 1; j < topMatrix; j++)
+                {
+                    if (matrixCount[i, 1] < matrixCount[j, 1])
+                    {
+                        Change(ref matrixCount[i, 0], ref matrixCount[j, 0]);
+                        Change(ref matrixCount[i, 1], ref matrixCount[j, 1]);
+                    }
+                }
+            }
+        }
+
+        private int GetRepeatedCounter(int[,] matrixCount, int topMatrix)
+        {
+            int repeatedCounter = 1;
+            for (; repeatedCounter < topMatrix; repeatedCounter++)
+            {
+                if (matrixCount[0, 1] != matrixCount[repeatedCounter, 1])
+                {
+                    break;
+                }
+            }
+            return repeatedCounter;
+        }
+
+        private MyArray FillMostRepeated(int repeatedCounter, int[,] matrixCount)
+        {
+            var mostRepeated = new MyArray(repeatedCounter);
+            for (int i = 0; i < repeatedCounter; i++)
+            {
+                mostRepeated.Add(matrixCount[i, 0]);
+            }
+            return mostRepeated;
         }
 
         public override string ToString()
@@ -320,25 +334,22 @@ namespace Arrays.Logic
             }
         }
 
-        private bool IsPrime(int n)
-        {
-            if (n == 1) return false;
-
-            for (int i = 2; i <= Math.Sqrt(n); i++)
-            {
-                if (n % i == 0)
-                {
-                    return false;
-                }
-            }
-            return true;
-        }
-
         private void Change(ref int a, ref int b)
         {
             int aux = a;
             a = b;
             b = aux;
+        }
+
+        public MyArray Invest()
+        {
+            var array = new MyArray(_array.Length);
+            for (int i = _array.Length - 1; i >= 0; i--)
+            {
+                array.Add(_array[i]);
+            }
+
+            return array;
         }
     }
 }

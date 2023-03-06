@@ -35,10 +35,26 @@ try
             case 6:
                 Console.WriteLine(myArray.GetMostRepeated());
                 break;
+            case 7:
+                Console.WriteLine(myArray.Invest());
+                break;
+            case 8:
+                
+                break;
+            case 9:
+                
+                break;
+            case 10:
+                
+                break;
+            case 11:
+                
+                break;
             case 0:
+                Console.WriteLine("\nSaliendo...");
                 break;
             default:
-                Console.WriteLine("Fuck you. Opción no existe!!!!");
+                Console.WriteLine("\nFuck you. Opción no existe!!!!");
                 break;
         }
     } while (option != 0);
@@ -50,13 +66,20 @@ catch (Exception ex)
 
 int Menu()
 {
-    Console.WriteLine("1. Definir tamaño de arreglo");
-    Console.WriteLine("2. Mostrar arreglo");
-    Console.WriteLine("3. Mostrar múmeros pares");
-    Console.WriteLine("4. Mostrar múmeros primos");
-    Console.WriteLine("5. Mostrar múmeros que no se repiten");
-    Console.WriteLine("6. Mostrar múmeros que más se repiten");
-    Console.WriteLine("0. Salir");
+    Console.WriteLine(
+        "\nOPCIONES:\n" +
+            "   - Opción 1. Definir tamaño de arreglo.\n" +
+                "   - Opción 2. Mostrar arreglo.\n" +
+                    "   - Opción 3. Mostrar múmeros pares.\n" +
+                        "   - Opción 4. Mostrar múmeros primos.\n" +
+                            "   - Opción 5. Mostrar múmeros que no se repiten.\n" +
+                                "   - Opción 6. Mostrar múmeros que más se repiten.\n" +
+                                    "   - Opción 7. Invertir arreglo.\n" +
+                                        "   - Opción 8. Sumar arreglo.\n" +
+                                            "   - Opción 9. Promedio arreglo.\n" +
+                                                "   - Opción 10. Arreglo fibonnaci.\n" +
+                                                    "   - Opción 11. Ordenar arreglo.\n" +
+                                                        "   - Opción 0. Salir.");
     bool isValid = false;
     int option = 0;
     do
@@ -65,7 +88,7 @@ int Menu()
         var optionString = Console.ReadLine();
         if (!int.TryParse(optionString, out option))
         {
-            Console.WriteLine("Opción inválida, solo use números.");
+            Console.WriteLine("\nOpción inválida, solo use números.");
             isValid = false;
         }
         else
