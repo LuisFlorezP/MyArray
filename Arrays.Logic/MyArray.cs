@@ -308,37 +308,6 @@ namespace Arrays.Logic
         }
         #endregion
 
-        #region Methods for Sort
-        public void Sort()
-        {
-            Sort(descending: false);
-        }
-
-        public void Sort(bool descending)
-        {
-            for (int i = 0; i < _top - 1; i++)
-            {
-                for (int j = i + 1; j < _top; j++)
-                {
-                    if (descending)
-                    {
-                        if (_array[i] < _array[j])
-                        {
-                            Change(ref _array[i], ref _array[j]);
-                        }
-                    }
-                    else
-                    {
-                        if (_array[i] > _array[j])
-                        {
-                            Change(ref _array[i], ref _array[j]);
-                        }
-                    }
-                }
-            }
-        }
-        #endregion
-
         #region Methods for Invest
         public MyArray Invest()
         {
@@ -414,6 +383,84 @@ namespace Arrays.Logic
             }
 
             return array;
+        }
+        #endregion
+
+        #region Methods for OrderAorD
+        public void OrderAorD()
+        {
+            int option;
+            bool order;
+            do
+            {
+                option = Options();
+                switch (option)
+                {
+                    case 1:
+                        order = false;
+                        Sort(order);
+                        break;
+                    case 2:
+                        order = true;
+                        Sort(order);
+                        break;
+                    default:
+                        Console.WriteLine("\nOption is not valid.");
+                        break;
+                }
+            } while (option != 1 && option != 2);
+        }
+
+        private int Options()
+        {
+            bool isValid = false;
+            int option = 0;
+            do
+            {
+                Console.Write("\nOrdenar de forma ascendente (1) o de forma descendente (2): ");
+                var optionString = Console.ReadLine();
+                if (!int.TryParse(optionString, out option))
+                {
+                    Console.WriteLine("\nOpción inválida, solo use números.");
+                    isValid = false;
+                }
+                else
+                {
+                    isValid = true;
+                }
+            } while (!isValid);
+            return option;
+        }
+        #endregion
+
+        #region Methods for Sort
+        private void Sort()
+        {
+            Sort(descending: false);
+        }
+
+        private void Sort(bool descending)
+        {
+            for (int i = 0; i < _top - 1; i++)
+            {
+                for (int j = i + 1; j < _top; j++)
+                {
+                    if (descending)
+                    {
+                        if (_array[i] < _array[j])
+                        {
+                            Change(ref _array[i], ref _array[j]);
+                        }
+                    }
+                    else
+                    {
+                        if (_array[i] > _array[j])
+                        {
+                            Change(ref _array[i], ref _array[j]);
+                        }
+                    }
+                }
+            }
         }
         #endregion
 

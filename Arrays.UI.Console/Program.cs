@@ -1,5 +1,6 @@
 ﻿using Arrays.Logic;
 using System.ComponentModel.Design;
+using System.Runtime.CompilerServices;
 
 try
 {
@@ -52,7 +53,8 @@ try
                 Console.WriteLine(myArray.Fibonacci(l));
                 break;
             case 11:
-                
+                myArray.OrderAorD();
+                Console.WriteLine(myArray);
                 break;
             case 0:
                 Console.WriteLine("\nComing out...");
