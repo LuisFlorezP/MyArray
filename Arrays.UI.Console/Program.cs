@@ -39,7 +39,7 @@ try
                 Console.WriteLine(myArray.Invest());
                 break;
             case 8:
-                
+                Console.WriteLine(myArray);
                 break;
             case 9:
                 

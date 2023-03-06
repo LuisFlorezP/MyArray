@@ -6,16 +6,21 @@ namespace Arrays.Logic
 {
     public class MyArray
     {
+        #region Attributes
         private int _top; // Logic size
         private int[] _array;
+        #endregion
 
+        #region Constructors
         public MyArray(int n)
         {
             N = n;
             _array = new int[n];
             _top = 0;
         }
+        #endregion
 
+        #region Methods of array conditions
         /// <summary>
         /// Indicates if the array is full
         /// </summary>
@@ -27,7 +32,9 @@ namespace Arrays.Logic
         public bool IsEmpty => _top == 0;
 
         public int N { get; } // Physical size
+        #endregion
 
+        #region Methods CRUD of the array
         public void Add(int number)
         {
             if (IsFull)
@@ -89,7 +96,9 @@ namespace Arrays.Logic
 
             _top--;
         }
+        #endregion
 
+        #region Methods for create array
         public void Fill()
         {
             Fill(1, 100);
@@ -104,7 +113,39 @@ namespace Arrays.Logic
             }
             _top = N;
         }
+        #endregion
 
+        #region Methods for GetOdds
+        public MyArray GetOdds()
+        {
+            int oddsCount = 0;
+            for (int i = 0; i < _top; i++)
+            {
+                if (IsOdd(_array[i]))
+                {
+                    oddsCount++;
+                }
+            }
+
+            var oddsArray = new MyArray(oddsCount);
+            for (int i = 0; i < _top; i++)
+            {
+                if (IsOdd(_array[i]))
+                {
+                    oddsArray.Add(_array[i]);
+                }
+            }
+
+            return oddsArray;
+        }
+
+        private bool IsOdd(int n)
+        {
+            return n % 2 == 0;
+        }
+        #endregion
+
+        #region Methods for GetPrimes
         public MyArray GetPrimes()
         {
             int primesCount = 0;
@@ -142,35 +183,9 @@ namespace Arrays.Logic
             }
             return true;
         }
+        #endregion
 
-        public MyArray GetOdds()
-        {
-            int oddsCount = 0;
-            for (int i = 0; i < _top; i++)
-            {
-                if (IsOdd(_array[i]))
-                {
-                    oddsCount++;
-                }
-            }
-
-            var oddsArray = new MyArray(oddsCount);
-            for (int i = 0; i < _top; i++)
-            {
-                if (IsOdd(_array[i]))
-                {
-                    oddsArray.Add(_array[i]);
-                }
-            }
-
-            return oddsArray;
-        }
-
-        private bool IsOdd(int n)
-        {
-            return n % 2 == 0;
-        }
-
+        #region Methods for GetNonRepeated
         public MyArray GetNonRepeated()
         {
             int nonRepeatedCount = 0;
@@ -210,7 +225,9 @@ namespace Arrays.Logic
             }
             return nonRepeated;
         }
+        #endregion
 
+        #region Methods for GetMostRepeated
         public MyArray GetMostRepeated()
         {
             int[,] matrixCount = new int[_top, 2];
@@ -260,6 +277,13 @@ namespace Arrays.Logic
             }
         }
 
+        private void Change(ref int a, ref int b)
+        {
+            int aux = a;
+            a = b;
+            b = aux;
+        }
+
         private int GetRepeatedCounter(int[,] matrixCount, int topMatrix)
         {
             int repeatedCounter = 1;
@@ -282,29 +306,9 @@ namespace Arrays.Logic
             }
             return mostRepeated;
         }
+        #endregion
 
-        public override string ToString()
-        {
-            if (IsEmpty)
-            {
-                return "Empty array.";
-            }
-
-            string output = string.Empty;
-            int count = 0;
-            for (int i = 0; i < _top; i++)
-            {
-                output += $"{_array[i]}\t";
-                count++;
-                if (count > 9)
-                {
-                    count = 0;
-                    output += "\n";
-                }
-            }
-            return output;
-        }
-
+        #region Methods for Sort
         public void Sort()
         {
             Sort(descending: false);
@@ -333,14 +337,9 @@ namespace Arrays.Logic
                 }
             }
         }
+        #endregion
 
-        private void Change(ref int a, ref int b)
-        {
-            int aux = a;
-            a = b;
-            b = aux;
-        }
-
+        #region Methods for Invest
         public MyArray Invest()
         {
             var array = new MyArray(_array.Length);
@@ -351,5 +350,30 @@ namespace Arrays.Logic
 
             return array;
         }
+        #endregion
+
+        #region ToString
+        public override string ToString()
+        {
+            if (IsEmpty)
+            {
+                return "Empty array.";
+            }
+
+            string output = string.Empty;
+            int count = 0;
+            for (int i = 0; i < _top; i++)
+            {
+                output += $"{_array[i]}\t";
+                count++;
+                if (count > 9)
+                {
+                    count = 0;
+                    output += "\n";
+                }
+            }
+            return output;
+        }
+        #endregion
     }
 }
