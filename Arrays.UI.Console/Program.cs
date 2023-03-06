@@ -39,7 +39,7 @@ try
                 Console.WriteLine(myArray.Invest());
                 break;
             case 8:
-                Console.WriteLine(myArray);
+                Console.WriteLine("\nTotal amount of the array: " + myArray.TotalAmount());
                 break;
             case 9:
                 

@@ -352,6 +352,20 @@ namespace Arrays.Logic
         }
         #endregion
 
+        #region Methods for TotalAmount
+        public int TotalAmount()
+        {
+            int totalAmount = 0;
+
+            for (int i = 0; i < _top; i++)
+            {
+                totalAmount += _array[i];
+            }
+
+            return totalAmount;
+        }
+        #endregion
+
         #region ToString
         public override string ToString()
         {
